@@ -1,30 +1,19 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
 import {
   Check,
-  MapPin,
   Shield,
   Zap,
-  CreditCard,
   BarChart3,
-  Smartphone,
-  Wrench,
-  Clock4,
-  Star,
   Cookie as CookieIcon,
   Mail,
   Phone,
   Globe,
   ArrowRight,
-  Car,
-  Building2,
   Map as MapIcon,
-  Settings,
-  Lock,
-  Users,
-  TrendingUp,
-  Target
+  Users
 } from "lucide-react";
+import { motion } from "framer-motion";
+
 
 // ===== Utilities =====
 const cx = (...cls: Array<string | false | null | undefined>) => cls.filter(Boolean).join(" ");
@@ -54,26 +43,6 @@ const Card: React.FC<{ className?: string; children: React.ReactNode; hover?: bo
   <div className={cx("rounded-2xl bg-gray-800 p-6 shadow-lg", hover && "hover:shadow-xl transition-shadow duration-300", className)}>{children}</div>
 );
 
-// ===== Hash Router =====
-function useHashRoute() {
-  const [route, setRoute] = useState<string>("home");
-  useEffect(() => {
-    if (!isBrowser) return;
-    const read = () => {
-      try {
-        const h = window.location.hash?.replace("#", "");
-        setRoute(h && h.length > 0 ? h : "home");
-      } catch {
-        setRoute("home");
-      }
-    };
-    read();
-    const onHash = () => read();
-    window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
-  }, []);
-  return route;
-}
 
 // ===== Cookie Consent =====
 const CookieBanner: React.FC = () => {
@@ -390,7 +359,7 @@ const Features: React.FC = () => (
 
 const Pricing: React.FC = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
-  const [vehicleCount, setVehicleCount] = useState(10);
+  
 
   const plans = [
     {
@@ -648,7 +617,7 @@ const Footer: React.FC = () => (
 );
 
 export default function FranstrackSite() {
-  const route = useHashRoute();
+  
   
   return (
     <div className="min-h-screen bg-gray-900 text-white">

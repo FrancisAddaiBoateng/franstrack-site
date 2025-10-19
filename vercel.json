@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "https://franstrack.co.uk/:path*",
+      "destination": "https://www.franstrack.co.uk/:path*",
+      "permanent": true
+    }
+  ]
+}
